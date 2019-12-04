@@ -11,11 +11,11 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
         self.ui = Ui_MainWindow()
+        self.imgNumber = 0
         self.ui.setupUi(self)
         self.groupSize, self.imgIndex = 5, 0
         self.imgLabels = [self.ui.image1, self.ui.image2,
                           self.ui.image3, self.ui.image4, self.ui.image5]
-        self.imgNumber = 0
 
     def showImage(self):
         self.readImages()
@@ -50,7 +50,6 @@ class MainWindow(QMainWindow):
         self.images = []
         for item in self.names[self.imgIndex]:
             self.images.append(QPixmap(self.filePath + '/' + item))
-
 
     def addIndex(self, cnt):
         self.imgIndex += cnt
@@ -91,7 +90,7 @@ class MainWindow(QMainWindow):
         self.getPath()
         self.getImagesName()
         self.imgIndex = 0
-        self.updateUI
+        self.updateUI()
 
 
 if __name__ == '__main__':
