@@ -214,7 +214,7 @@
    <sender>pushButton_2</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>getPath()</slot>
+   <slot>openFoldButton()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>841</x>
@@ -297,5 +297,6 @@
   <slot>goNext()</slot>
   <slot>goEnd()</slot>
   <slot>goHome()</slot>
+  <slot>openFoldButton()</slot>
  </slots>
 </ui>

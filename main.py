@@ -17,8 +17,12 @@ class MainWindow(QMainWindow):
         self.imgLabels = [self.ui.image1, self.ui.image2,
                           self.ui.image3, self.ui.image4, self.ui.image5]
 
+    def readImages(self):
+        self.images = []
+        for item in self.names[self.imgIndex]:
+            self.images.append(QPixmap(self.filePath + '/' + item))
+
     def showImage(self):
-        self.readImages()
         for i in range(len(self.images)):
             w, h = self.imgLabels[i].width(), self.imgLabels[i].height()
             self.imgLabels[i].setPixmap(
@@ -46,10 +50,6 @@ class MainWindow(QMainWindow):
             self.names.append(tmp)
         self.imgNumber = len(self.names)
 
-    def readImages(self):
-        self.images = []
-        for item in self.names[self.imgIndex]:
-            self.images.append(QPixmap(self.filePath + '/' + item))
 
     def addIndex(self, cnt):
         self.imgIndex += cnt
@@ -59,6 +59,10 @@ class MainWindow(QMainWindow):
             self.imgIndex = 0
 
     def updateUI(self):
+        for item in self.imgLabels:
+            item.clear()
+        if self.imgNumber == 0:
+            return None
         self.readImages()
         self.showImage()
 
